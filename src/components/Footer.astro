@@ -1,0 +1,337 @@
+
+<footer class="site-footer">
+    <section
+        id="footer-drawer"
+        class="footer-drawer"
+        aria-label="Website links"
+        hidden
+    >
+        <div class="drawer-heading">
+            <h2>Explore TruthOrDareSpin</h2>
+            <p>Everything you need to get the fun started.</p>
+        </div>
+
+        <nav class="drawer-links" aria-label="Footer navigation">
+            <a href="/play/">Play Game</a>
+            <a href="/how-to-play/">How to Play</a>
+            <a href="/truth-questions/">Truth Questions</a>
+            <a href="/dare-ideas/">Dare Ideas</a>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact</a>
+            <a href="/safety/">Safety Guide</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Use</a>
+        </nav>
+
+        <div class="drawer-bottom">
+            <span>Play together. Make memories. Keep it fun.</span>
+            <small>© {new Date().getFullYear()} TruthOrDareSpin</small>
+        </div>
+    </section>
+
+    <div class="footer-toolbar">
+        <div class="footer-left">
+            <button
+                id="footer-button"
+                class="button-mini toggle-footer-menu-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="footer-drawer"
+                aria-label="Expand footer links"
+            >
+                <svg
+                    class="footer-chevron"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="m6 9 6 6 6-6" />
+                </svg>
+            </button>
+
+            <span class="footer-label">Explore</span>
+        </div>
+
+        <nav class="footer-right" aria-label="Quick links">
+            <a class="button-mini" href="/play/">Play</a>
+            <a class="button-mini" href="/how-to-play/">How to Play</a>
+            <a class="button-mini desktop-shortcut" href="/truth-questions/">
+                Truths
+            </a>
+            <a class="button-mini desktop-shortcut" href="/dare-ideas/">
+                Dares
+            </a>
+        </nav>
+    </div>
+</footer>
+
+<script>
+
+const footerButton = document.querySelector("#footer-button");
+const footerDrawer = document.querySelector("#footer-drawer");
+const footerToolbar = document.querySelector(".footer-toolbar");
+
+if (footerButton && footerDrawer && footerToolbar) {
+    const closeFooter = () => {
+        footerButton.setAttribute("aria-expanded", "false");
+        footerButton.setAttribute("aria-label", "Expand footer links");
+        footerDrawer.hidden = true;
+    };
+
+    const toggleFooter = () => {
+        const isExpanded =
+            footerButton.getAttribute("aria-expanded") === "true";
+
+        footerButton.setAttribute("aria-expanded", String(!isExpanded));
+        footerButton.setAttribute(
+            "aria-label",
+            isExpanded ? "Expand footer links" : "Collapse footer links"
+        );
+
+        footerDrawer.hidden = isExpanded;
+    };
+
+    footerButton.addEventListener("click", toggleFooter);
+
+    document.addEventListener("click", (event) => {
+        if (footerButton.getAttribute("aria-expanded") !== "true") {
+            return;
+        }
+
+        const target = event.target;
+
+        if (
+            target instanceof Node &&
+            !footerToolbar.contains(target) &&
+            !footerDrawer.contains(target)
+        ) {
+            closeFooter();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Escape" &&
+            footerButton.getAttribute("aria-expanded") === "true"
+        ) {
+            closeFooter();
+            footerButton.focus();
+        }
+    });
+}
+</script>
+
+<style>
+    .site-footer {
+        position: relative;
+        z-index: 60;
+        color: #9B9DAD;
+        font-family: Lato, Inter, system-ui, sans-serif;
+    }
+
+    .footer-toolbar {
+        position: relative;
+        z-index: 60;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        display: flex;
+        height: 36px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+
+        padding: 0.2rem 0.5rem;
+        border-top: 1px solid #3A3D47;
+        background: #2C303A;
+        color: #9B9DAD;
+        box-sizing: border-box;
+    }
+
+    .footer-left,
+    .footer-right {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .footer-right {
+        overflow: hidden;
+    }
+
+    .footer-label {
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .button-mini {
+        display: inline-flex;
+        min-width: 0;
+        height: 22px;
+        align-items: center;
+        justify-content: center;
+
+        margin: 0;
+        padding: 3px 7px;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        background: #444857;
+        color: #FFFFFF;
+
+        font: inherit;
+        font-size: 11.2px;
+        line-height: 1;
+        white-space: nowrap;
+        text-decoration: none;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    .button-mini:hover {
+        background: #5A5F73;
+    }
+
+    .button-mini:focus-visible {
+        outline: 2px solid #C6FF4D;
+        outline-offset: 2px;
+    }
+
+    .toggle-footer-menu-button {
+        width: 24px;
+        padding: 3px;
+    }
+
+    .footer-chevron {
+        transition: transform 180ms ease;
+    }
+
+    #footer-button[aria-expanded="true"] .footer-chevron {
+        transform: rotate(180deg);
+    }
+
+    .footer-drawer {
+        position: fixed;
+        z-index: 61;
+        right: 8px;
+        bottom: 44px;
+        left: 8px;
+
+        width: auto;
+        max-width: 720px;
+        max-height: min(55vh, 460px);
+        overflow-y: auto;
+        margin-inline: auto;
+        padding: 20px;
+
+        border: 1px solid #424653;
+        border-radius: 8px;
+        background: #222630;
+        color: #E8EAF0;
+        box-shadow: 0 10px 32px rgb(0 0 0 / 35%);
+    }
+
+    .footer-drawer[hidden] {
+        display: none;
+    }
+
+    .drawer-heading h2 {
+        margin: 0 0 5px;
+        color: #FFFFFF;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    .drawer-heading p {
+        margin: 0 0 18px;
+        color: #A9ADBA;
+        font-size: 13px;
+    }
+
+    .drawer-links {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .drawer-links a {
+        display: flex;
+        min-height: 38px;
+        align-items: center;
+        padding: 8px 10px;
+        border: 1px solid #3B404D;
+        border-radius: 4px;
+        background: #2C303A;
+        color: #FFFFFF;
+        font-size: 12px;
+        text-decoration: none;
+    }
+
+    .drawer-links a:hover {
+        background: #444857;
+    }
+
+    .drawer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: 20px;
+        padding-top: 12px;
+        border-top: 1px solid #3B404D;
+        color: #A9ADBA;
+        font-size: 11px;
+    }
+
+    @media (max-width: 600px) {
+        .footer-toolbar {
+            padding-inline: 6px;
+            gap: 4px;
+        }
+
+        .footer-label {
+            display: none;
+        }
+
+        .footer-right {
+            gap: 3px;
+        }
+
+        .button-mini {
+            padding-inline: 6px;
+            font-size: 10.5px;
+        }
+
+        .desktop-shortcut {
+            display: none;
+        }
+
+        .footer-drawer {
+            right: 6px;
+            left: 6px;
+            padding: 16px;
+        }
+
+        .drawer-links {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .drawer-bottom {
+            flex-direction: column;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .footer-chevron {
+            transition: none;
+        }
+    }
+</style>

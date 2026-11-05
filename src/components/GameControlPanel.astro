@@ -1,0 +1,885 @@
+---
+const themes = [
+    {
+        id: "neon",
+        name: "Neon After Dark",
+        type: "theme",
+        previewClass: "preview-neon",
+        selected: true,
+    },
+    {
+        id: "cyber",
+        name: "Cyber Blue",
+        type: "theme",
+        previewClass: "preview-cyber",
+    },
+    {
+        id: "sunset",
+        name: "Sunset Arcade",
+        type: "theme",
+        previewClass: "preview-sunset",
+    },
+    {
+        id: "light",
+        name: "Light Pop",
+        type: "theme",
+        previewClass: "preview-light",
+    },
+];
+
+const boards = [
+    {
+        id: "classic",
+        name: "Classic",
+        type: "board",
+        previewClass: "preview-board-classic",
+        selected: true,
+    },
+    {
+        id: "neon-ring",
+        name: "Neon Ring",
+        type: "board",
+        previewClass: "preview-board-neon",
+    },
+    {
+        id: "party",
+        name: "Party Night",
+        type: "board",
+        previewClass: "preview-board-party",
+    },
+    {
+        id: "royal",
+        name: "Royal",
+        type: "board",
+        previewClass: "preview-board-royal",
+        locked: true,
+    },
+    {
+        id: "gold",
+        name: "Golden Lounge",
+        type: "board",
+        previewClass: "preview-board-gold",
+        locked: true,
+    },
+];
+
+const bottles = [
+    {
+        id: "classic",
+        name: "Classic",
+        type: "bottle",
+        previewClass: "preview-bottle-classic",
+        selected: true,
+    },
+    {
+        id: "emerald",
+        name: "Emerald",
+        type: "bottle",
+        previewClass: "preview-bottle-emerald",
+    },
+    {
+        id: "crystal",
+        name: "Crystal",
+        type: "bottle",
+        previewClass: "preview-bottle-crystal",
+    },
+    {
+        id: "golden",
+        name: "Golden",
+        type: "bottle",
+        previewClass: "preview-bottle-golden",
+        locked: true,
+    },
+    {
+        id: "royal",
+        name: "Royal Edition",
+        type: "bottle",
+        previewClass: "preview-bottle-royal",
+        locked: true,
+    },
+];
+---
+
+<div
+    class="game-control-panel"
+    data-game-control-panel
+    aria-hidden="true"
+    hidden
+>
+    <div
+        class="game-control-panel__backdrop"
+        data-panel-close
+        aria-hidden="true"
+    ></div>
+
+    <section
+        class="game-control-panel__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="game-control-panel-title"
+    >
+        <header class="game-control-panel__header">
+            <h2 id="game-control-panel-title" class="game-control-panel__title">
+                Theme
+            </h2>
+
+            <button
+                type="button"
+                class="game-control-panel__close"
+                aria-label="Close"
+                data-panel-close
+            >
+                <span aria-hidden="true">×</span>
+            </button>
+        </header>
+
+        <div class="game-control-panel__content">
+
+            <!-- THEME -->
+            <div class="game-panel-section" data-panel-section="theme">
+                <div class="game-card-grid">
+                    {themes.map((item) => (
+                        <button
+                            type="button"
+                            class:list={[
+                                "game-option-card",
+                                item.selected && "is-selected",
+                            ]}
+                            data-option-type={item.type}
+                            data-option-id={item.id}
+                            aria-pressed={item.selected ? "true" : "false"}
+                        >
+                            <span
+                                class:list={[
+                                    "game-option-card__preview",
+                                    item.previewClass,
+                                ]}
+                            >
+                                <span class="preview-label">
+                                    {item.name}
+                                </span>
+                            </span>
+
+                            <span class="game-option-card__name">
+                                {item.name}
+                            </span>
+
+                            <span
+                                class="game-option-card__check"
+                                aria-hidden="true"
+                            >
+                                ✓
+                            </span>
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+
+            <!-- BOARD -->
+            <div class="game-panel-section" data-panel-section="board" hidden>
+                <div class="game-card-grid">
+                    {boards.map((item) => (
+                        <button
+                            type="button"
+                            class:list={[
+                                "game-option-card",
+                                item.selected && "is-selected",
+                                item.locked && "is-locked",
+                            ]}
+                            data-option-type={item.type}
+                            data-option-id={item.id}
+                            aria-pressed={item.selected ? "true" : "false"}
+                            aria-label={
+                                item.locked
+                                    ? `${item.name}, locked`
+                                    : item.name
+                            }
+                        >
+                            <span
+                                class:list={[
+                                    "game-option-card__preview",
+                                    item.previewClass,
+                                ]}
+                            >
+                                {item.locked && (
+                                    <span
+                                        class="game-option-card__lock"
+                                        aria-hidden="true"
+                                    >
+                                        🔒
+                                    </span>
+                                )}
+
+                                <span class="preview-label">
+                                    {item.name}
+                                </span>
+                            </span>
+
+                            <span class="game-option-card__name">
+                                {item.name}
+                            </span>
+
+                            {item.locked && (
+                                <span class="game-option-card__premium">
+                                    Premium
+                                </span>
+                            )}
+
+                            <span
+                                class="game-option-card__check"
+                                aria-hidden="true"
+                            >
+                                ✓
+                            </span>
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+
+            <!-- BOTTLE -->
+            <div class="game-panel-section" data-panel-section="bottle" hidden>
+                <div class="game-card-grid">
+                    {bottles.map((item) => (
+                        <button
+                            type="button"
+                            class:list={[
+                                "game-option-card",
+                                item.selected && "is-selected",
+                                item.locked && "is-locked",
+                            ]}
+                            data-option-type={item.type}
+                            data-option-id={item.id}
+                            aria-pressed={item.selected ? "true" : "false"}
+                            aria-label={
+                                item.locked
+                                    ? `${item.name}, locked`
+                                    : item.name
+                            }
+                        >
+                            <span
+                                class:list={[
+                                    "game-option-card__preview",
+                                    item.previewClass,
+                                ]}
+                            >
+                                <span class="dummy-bottle"></span>
+
+                                {item.locked && (
+                                    <span
+                                        class="game-option-card__lock"
+                                        aria-hidden="true"
+                                    >
+                                        🔒
+                                    </span>
+                                )}
+                            </span>
+
+                            <span class="game-option-card__name">
+                                {item.name}
+                            </span>
+
+                            {item.locked && (
+                                <span class="game-option-card__premium">
+                                    Premium
+                                </span>
+                            )}
+
+                            <span
+                                class="game-option-card__check"
+                                aria-hidden="true"
+                            >
+                                ✓
+                            </span>
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+
+            <!-- VOLUME -->
+            <div class="game-panel-section game-panel-section--simple" data-panel-section="volume" hidden>
+                <div class="game-setting">
+                    <div class="game-setting__heading">
+                        <span>Game Volume</span>
+                        <strong data-volume-value>70%</strong>
+                    </div>
+
+                    <input
+                        class="game-range"
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="70"
+                        data-volume-slider
+                        aria-label="Game volume"
+                    />
+
+                    <button
+                        type="button"
+                        class="game-setting-button"
+                        data-volume-mute
+                    >
+                        🔊 <span>Mute</span>
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- MUSIC -->
+            <div class="game-panel-section game-panel-section--simple" data-panel-section="music" hidden>
+                <div class="game-setting">
+                    <div class="game-setting__heading">
+                        <span>Background Music</span>
+
+                        <button
+                            type="button"
+                            class="game-switch is-on"
+                            data-music-toggle
+                            aria-pressed="true"
+                        >
+                            ON
+                        </button>
+                    </div>
+
+                    <div class="music-placeholder">
+                        <span>♪</span>
+                        <span>Party Mode</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- SETTINGS -->
+            <div class="game-panel-section game-panel-section--simple" data-panel-section="settings" hidden>
+                <div class="game-settings-list">
+
+                    <label class="game-settings-row">
+                        <span>Haptic Feedback</span>
+                        <input type="checkbox" checked />
+                    </label>
+
+                    <label class="game-settings-row">
+                        <span>Confirm Before Spin</span>
+                        <input type="checkbox" checked />
+                    </label>
+
+                    <label class="game-settings-row">
+                        <span>Auto Spin</span>
+                        <input type="checkbox" />
+                    </label>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<script>
+    import "../scripts/gameControlPanel.js";
+</script>
+
+<style>
+    /* =====================================================
+       PANEL
+       ===================================================== */
+
+    .game-control-panel {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+
+        pointer-events: auto;
+    }
+
+    :global(html.game-control-panel-open) {
+        overflow: hidden;
+    }
+
+    .game-control-panel[hidden] {
+        display: none;
+    }
+
+    .game-control-panel__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgb(0 0 0 / 0.62);
+        backdrop-filter: blur(5px);
+    }
+
+    .game-control-panel__dialog {
+        position: relative;
+        z-index: 1;
+
+        width: min(680px, 100%);
+        max-height: min(720px, calc(100dvh - 40px));
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+
+        border: 1px solid var(--color-border);
+        border-radius: 20px;
+
+        background: var(--color-card);
+        color: var(--color-text);
+
+        box-shadow: var(--shadow-card);
+    }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .game-control-panel__header {
+        flex: 0 0 auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 14px 16px;
+
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .game-control-panel__title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .game-control-panel__close {
+        width: 36px;
+        height: 36px;
+
+        display: grid;
+        place-items: center;
+
+        padding: 0;
+        border: 0;
+        border-radius: 10px;
+
+        background: transparent;
+        color: var(--color-text);
+
+        font-size: 28px;
+        line-height: 1;
+
+        cursor: pointer;
+    }
+
+    .game-control-panel__close:hover {
+        background: var(--color-surface);
+    }
+
+    /* =====================================================
+       SCROLLABLE CONTENT
+       ===================================================== */
+
+    .game-control-panel__content {
+        flex: 1 1 auto;
+        min-height: 0;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+
+        padding: 16px;
+    }
+
+    .game-panel-section[hidden] {
+        display: none;
+    }
+
+    /* =====================================================
+       CARDS
+       ===================================================== */
+
+    .game-card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .game-option-card {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+
+        min-width: 0;
+
+        padding: 0;
+
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+
+        overflow: hidden;
+
+        background: var(--color-surface);
+        color: var(--color-text);
+
+        text-align: left;
+        cursor: pointer;
+
+        transition:
+            transform 150ms ease,
+            border-color 150ms ease,
+            box-shadow 150ms ease;
+    }
+
+    .game-option-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-card);
+    }
+
+    .game-option-card:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    .game-option-card.is-selected {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 2px var(--color-primary);
+    }
+
+    .game-option-card.is-locked {
+        opacity: 0.72;
+    }
+
+    .game-option-card__preview {
+        position: relative;
+
+        min-height: 120px;
+
+        display: grid;
+        place-items: center;
+
+        overflow: hidden;
+
+        background: #15151f;
+    }
+
+    .game-option-card__name {
+        padding: 10px 12px;
+
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .game-option-card__check {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+
+        width: 24px;
+        height: 24px;
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 50%;
+
+        background: var(--color-primary);
+        color: white;
+
+        font-size: 13px;
+
+        opacity: 0;
+    }
+
+    .game-option-card.is-selected .game-option-card__check {
+        opacity: 1;
+    }
+
+    .game-option-card__lock {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+
+        display: grid;
+        place-items: center;
+
+        width: 30px;
+        height: 30px;
+
+        border-radius: 50%;
+
+        background: rgb(0 0 0 / 0.55);
+    }
+
+    .game-option-card__premium {
+        position: absolute;
+        bottom: 7px;
+        right: 8px;
+
+        padding: 3px 7px;
+
+        border-radius: 999px;
+
+        background: rgb(0 0 0 / 0.55);
+        color: white;
+
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .preview-label {
+        font-size: 13px;
+        font-weight: 700;
+        opacity: 0.75;
+    }
+
+    /* =====================================================
+       THEME PREVIEWS
+       ===================================================== */
+
+    .preview-neon {
+        background:
+            radial-gradient(circle at 30% 35%, #8B5CF6 0 8%, transparent 9%),
+            radial-gradient(circle at 70% 65%, #00F5FF 0 8%, transparent 9%),
+            #0B0B12;
+    }
+
+    .preview-cyber {
+        background:
+            linear-gradient(135deg, #091525, #12345a);
+    }
+
+    .preview-sunset {
+        background:
+            linear-gradient(135deg, #1B1018, #7c243d);
+    }
+
+    .preview-light {
+        background:
+            linear-gradient(135deg, #f5f5fa, #ddd9ff);
+        color: #17151f;
+    }
+
+    /* =====================================================
+       BOARD PREVIEWS
+       ===================================================== */
+
+    .preview-board-classic {
+        background:
+            radial-gradient(circle, transparent 28%, #777 29% 30%, transparent 31%),
+            radial-gradient(circle, #27232f 0 42%, #111 43%);
+    }
+
+    .preview-board-neon {
+        background:
+            radial-gradient(circle, transparent 27%, #38BDF8 28% 30%, transparent 31%),
+            #07131f;
+    }
+
+    .preview-board-party {
+        background:
+            radial-gradient(circle, transparent 28%, #FB7185 29% 31%, transparent 32%),
+            #24111b;
+    }
+
+    .preview-board-royal {
+        background:
+            radial-gradient(circle, transparent 28%, #d4af37 29% 31%, transparent 32%),
+            #17110a;
+    }
+
+    .preview-board-gold {
+        background:
+            radial-gradient(circle, #d4af37 0 8%, transparent 9%),
+            #20170a;
+    }
+
+    /* =====================================================
+       DUMMY BOTTLE PREVIEWS
+       ===================================================== */
+
+    .dummy-bottle {
+        width: 20px;
+        height: 90px;
+
+        border: 3px solid currentColor;
+        border-radius: 45% 45% 35% 35%;
+
+        transform: rotate(35deg);
+
+        opacity: 0.8;
+    }
+
+    .preview-bottle-classic {
+        background: #17202a;
+        color: #d8d8d8;
+    }
+
+    .preview-bottle-emerald {
+        background: #081d16;
+        color: #2dd4a0;
+    }
+
+    .preview-bottle-crystal {
+        background: #202431;
+        color: #dce8ff;
+    }
+
+    .preview-bottle-golden {
+        background: #241b08;
+        color: #d4af37;
+    }
+
+    .preview-bottle-royal {
+        background: #180d20;
+        color: #c084fc;
+    }
+
+    /* =====================================================
+       SIMPLE SETTINGS
+       ===================================================== */
+
+    .game-panel-section--simple {
+        padding: 4px;
+    }
+
+    .game-setting {
+        display: grid;
+        gap: 18px;
+    }
+
+    .game-setting__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .game-range {
+        width: 100%;
+        accent-color: var(--color-primary);
+    }
+
+    .game-setting-button {
+        min-height: 42px;
+
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+
+        background: var(--color-surface);
+        color: var(--color-text);
+
+        cursor: pointer;
+    }
+
+    .game-switch {
+        border: 0;
+        border-radius: 999px;
+
+        padding: 5px 10px;
+
+        background: var(--color-primary);
+        color: white;
+
+        font-size: 11px;
+        font-weight: 800;
+
+        cursor: pointer;
+    }
+
+    .music-placeholder {
+        min-height: 90px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+
+        background: var(--color-surface);
+
+        font-weight: 700;
+    }
+
+    .music-placeholder span:first-child {
+        font-size: 28px;
+    }
+
+    .game-settings-list {
+        display: grid;
+    }
+
+    .game-settings-row {
+        min-height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        border-bottom: 1px solid var(--color-border);
+
+        font-size: 14px;
+    }
+
+    .game-settings-row:last-child {
+        border-bottom: 0;
+    }
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 480px) {
+
+        .game-control-panel {
+            padding: 12px;
+        }
+
+        .game-control-panel__dialog {
+            width: 100%;
+            max-height: calc(100dvh - 24px);
+            border-radius: 16px;
+        }
+
+        .game-control-panel__content {
+            padding: 12px;
+        }
+
+        .game-card-grid {
+            gap: 10px;
+        }
+
+        .game-option-card__preview {
+            min-height: 105px;
+        }
+    }
+
+    @media (max-width: 360px) {
+
+        .game-card-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .game-option-card {
+            transition: none;
+        }
+    }
+</style>

@@ -1,0 +1,43 @@
+
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+    theme?: "neon" | "cyber" | "sunset" | "light";
+    headerVariant?: "default" | "game";    
+}
+
+const {
+    title = "TruthOrDareSpin — Play Truth or Dare Online",
+    description = "Play Truth or Dare Spin online with friends.",
+    theme = "neon",
+    headerVariant = "default",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme={theme}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content={description} />
+        <meta name="theme-color" content="#0B0B12" />
+
+        <title>{title}</title>
+    </head>
+
+    <body>
+        <Header variant={headerVariant} />
+
+        <main id="main-content">
+            <slot />
+        </main>
+
+        <Footer />
+    </body>
+</html>

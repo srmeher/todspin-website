@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <defs>
+    <!-- Board surface gradient - vibrant -->
+    <radialGradient id="boardSurface" cx="50%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#2a1a4e"/>
+      <stop offset="60%" stop-color="#1e1238"/>
+      <stop offset="100%" stop-color="#150d2a"/>
+    </radialGradient>
+
+    <!-- Outer rim with neon glow -->
+    <linearGradient id="outerRim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff6b9d"/>
+      <stop offset="25%" stop-color="#c44dff"/>
+      <stop offset="50%" stop-color="#ff6b9d"/>
+      <stop offset="75%" stop-color="#ffd93d"/>
+      <stop offset="100%" stop-color="#ff6b9d"/>
+    </linearGradient>
+
+    <!-- Neon glow filter -->
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="boardShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#c44dff" flood-opacity="0.35"/>
+    </filter>
+
+    <filter id="innerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+    </filter>
+
+    <!-- Truth section gradient (cyan/blue) -->
+    <linearGradient id="truthGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#0066ff"/>
+    </linearGradient>
+
+    <!-- Dare section gradient (pink/red) -->
+    <linearGradient id="dareGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff6b9d"/>
+      <stop offset="100%" stop-color="#ff3366"/>
+    </linearGradient>
+
+    <!-- Center hub gradient -->
+    <radialGradient id="hubGrad" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#ffe566"/>
+      <stop offset="50%" stop-color="#ffb800"/>
+      <stop offset="100%" stop-color="#ff6b00"/>
+    </radialGradient>
+
+    <!-- Spinner arrow gradient -->
+    <linearGradient id="arrowGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe566"/>
+      <stop offset="50%" stop-color="#ffb800"/>
+      <stop offset="100%" stop-color="#ff6b00"/>
+    </linearGradient>
+
+    <!-- Star sparkle -->
+    <radialGradient id="sparkle" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffd93d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient glow behind board -->
+  <circle cx="300" cy="300" r="290" fill="#c44dff" opacity="0.08" filter="url(#innerGlow)"/>
+
+  <!-- Outer rim -->
+  <circle cx="300" cy="300" r="282" fill="url(#outerRim)" opacity="1"/>
+
+  <!-- Main board surface -->
+  <circle cx="300" cy="300" r="267" fill="url(#boardSurface)" stroke="#3d2a6b" stroke-width="3"/>
+
+  <!-- Inner neon ring -->
+  <circle cx="300" cy="300" r="247" stroke="#c44dff" stroke-width="2" opacity="0.4" filter="url(#innerGlow)"/>
+
+  <!-- ===== TRUTH/DARE SECTIONS ===== -->
+  <!-- Truth half (left side, cyan) -->
+  <path d="M300 300 L300 58 A242 242 0 0 0 300 542 Z" fill="url(#truthGrad)" opacity="0.12"/>
+
+  <!-- Dare half (right side, pink) -->
+  <path d="M300 300 L300 58 A242 242 0 0 1 300 542 Z" fill="url(#dareGrad)" opacity="0.12"/>
+
+  <!-- Diagonal accents -->
+  <g stroke="#c44dff" stroke-width="1.5" opacity="0.25">
+    <line x1="120" y1="120" x2="480" y2="480"/>
+    <line x1="480" y1="120" x2="120" y2="480"/>
+  </g>
+
+  <!-- ===== TRUTH TEXT ===== -->
+  <g transform="translate(180, 310)">
+    <text x="0" y="0" font-family="'Arial Black', 'Impact', sans-serif" font-size="38" font-weight="900" fill="#00d4ff" opacity="0.85" text-anchor="middle" letter-spacing="2">TRUTH</text>
+  </g>
+
+  <!-- ===== DARE TEXT ===== -->
+  <g transform="translate(420, 310)">
+    <text x="0" y="0" font-family="'Arial Black', 'Impact', sans-serif" font-size="38" font-weight="900" fill="#ff6b9d" opacity="0.85" text-anchor="middle" letter-spacing="4">DARE</text>
+  </g>
+
+
+</svg>

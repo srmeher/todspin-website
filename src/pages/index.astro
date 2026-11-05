@@ -1,34 +1,756 @@
+
 ---
-const gameName = "Truth or Dare Spin";
+import SiteLayout from "../layouts/SiteLayout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+<SiteLayout
+    title="TruthOrDareSpin — Play Truth or Dare Online"
+    description="Spin the bottle and play Truth or Dare online with friends. Get set and let the fun begin."
+    headerVariant="game"
+>
 
-    <title>{gameName}</title>
+    <div class="home-page">
 
-    <meta
-        name="description"
-        content="Play Truth or Dare Spin online with friends."
-    />
-</head>
+        <!-- Game demo with desktop side advertisements -->
+        <section class="home-demo-layout" aria-label="Truth or Dare game demo">
 
-<body>
+            <!-- Desktop left advertisement -->
+            <aside class="home-side-ad home-side-ad--left" aria-label="Advertisement">
+                <div
+                    class="home-side-ad__inner"
+                    data-ad-slot="homepage-desktop-left"
+                >
+                    <!-- Left desktop AdSense code will go here. -->
+                </div>
+            </aside>
 
-    <main>
-        <h1>{gameName}</h1>
+            <!-- Main game demo -->
+            <section
+                class="home-spin-demo"
+                data-home-spin-demo
+                aria-label="Truth or Dare bottle spinner"
+            >
+                <a class="get-set-go" href="/play/">
+                    GET → SET → GO
+                </a>
 
-        <p>
-            A lightweight browser-based Truth or Dare game.
-        </p>
+            <div class="home-demo-toolbar">
+                <a class="demo-btn demo-btn--help" href="/how-to-play/">
+                    <span class="demo-btn__inner">
+                        <span class="demo-btn__sub">How to?</span>
+                        <span class="demo-btn__main">Play</span>
+                    </span>
+                </a>
 
-        <button>
-            Start Game
-        </button>
-    </main>
+                <a class="demo-btn demo-btn--play" href="/play/">
+                    <span class="demo-btn__inner">
+                        <span class="demo-btn__sub">Get Set Go</span>
+                        <span class="demo-btn__main">Play</span>
+                    </span>
+                </a>
+            </div>
 
-</body>
-</html>
+                <div class="spin-stage">
+                    <img
+                        class="spin-board"
+                        data-spin-board
+                        src="/game-assets/boards/minimal.svg"
+                        alt=""
+                        width="600"
+                        height="600"
+                        fetchpriority="high"
+                    />
+
+                    <div
+                        class="spin-bottle-layer"
+                        data-spin-bottle-layer
+                    ></div>
+                </div>
+            </section>
+
+            <!-- Desktop right advertisement -->
+            <aside class="home-side-ad home-side-ad--right" aria-label="Advertisement">
+                <div
+                    class="home-side-ad__inner"
+                    data-ad-slot="homepage-desktop-right"
+                >
+                    <!-- Right desktop AdSense code will go here. -->
+                </div>
+            </aside>
+        </section>
+
+        <!-- Mobile advertisement below the game -->
+        <section class="home-mobile-ad" aria-label="Advertisement">
+            <div
+                class="home-mobile-ad__inner"
+                data-ad-slot="homepage-mobile-below-demo"
+            >
+                <!-- Mobile AdSense code will go here. -->
+            </div>
+        </section>
+
+        <!-- Homepage content below the spinner -->
+        <section class="home-explore" aria-labelledby="explore-title">
+            <div class="explore-heading">
+                <span class="section-eyebrow">MORE WAYS TO PLAY</span>
+                <h1 id="explore-title">Let the fun begin!</h1>
+                <p>
+                    Find your next question, challenge your friends,
+                    and make every game memorable.
+                </p>
+            </div>
+
+            <div class="explore-grid">
+                <a class="explore-card truth-card" href="/truth-questions/">
+                    <span class="card-icon" aria-hidden="true">💜</span>
+                    <span class="card-category">GET HONEST</span>
+                    <h2>Truth Questions</h2>
+                    <p>
+                        Funny, unexpected, and interesting questions
+                        to get everyone talking.
+                    </p>
+                    <span class="card-link">Explore truths →</span>
+                </a>
+
+                <a class="explore-card dare-card" href="/dare-ideas/">
+                    <span class="card-icon" aria-hidden="true">⚡</span>
+                    <span class="card-category">TAKE THE CHALLENGE</span>
+                    <h2>Dare Ideas</h2>
+                    <p>
+                        Try creative, hilarious, and group-friendly
+                        challenges with your friends.
+                    </p>
+                    <span class="card-link">Discover dares →</span>
+                </a>
+
+                <article class="explore-card pro-card">
+                    <span class="card-icon" aria-hidden="true">👑</span>
+                    <span class="card-category">LEVEL UP</span>
+                    <h2>TruthOrDareSpin Pro</h2>
+                    <p>
+                        We're exploring more ways to customize your
+                        game. Stay tuned for future updates.
+                    </p>
+                    <span class="card-link">Coming soon</span>
+                </article>
+
+                <a class="explore-card about-card" href="/about/">
+                    <span class="card-icon" aria-hidden="true">🎮</span>
+                    <span class="card-category">OUR STORY</span>
+                    <h2>Made for Fun</h2>
+                    <p>
+                        One coding guy, a few idiot friends, and
+                        an idea to share unforgettable game nights.
+                    </p>
+                    <span class="card-link">Meet the story →</span>
+                </a>
+
+                <a class="explore-card guide-card" href="/how-to-play/">
+                    <span class="card-icon" aria-hidden="true">🚀</span>
+                    <span class="card-category">NEW HERE?</span>
+                    <h2>How to Play</h2>
+                    <p>
+                        Gather your friends, spin the bottle, and
+                        discover how to get started.
+                    </p>
+                    <span class="card-link">Learn the rules →</span>
+                </a>
+
+                <a class="explore-card safety-card" href="/safety/">
+                    <span class="card-icon" aria-hidden="true">🛡️</span>
+                    <span class="card-category">KEEP IT FUN</span>
+                    <h2>Play Your Way</h2>
+                    <p>
+                        Respect boundaries, skip uncomfortable
+                        challenges, and make everyone feel welcome.
+                    </p>
+                    <span class="card-link">Read our safety guide →</span>
+                </a>
+            </div>
+
+            <p class="explore-note">
+                Your game. Your friends. Your rules. Always keep it fun
+                and respect everyone's boundaries.
+            </p>
+        </section>
+    </div>
+
+    <style>
+    :root {
+        --neon-a: #00ffc8;
+        --neon-b: #00a3ff;
+        --btn-bg: #0c1218;
+    }
+
+    :global(html) {
+        overflow-x: clip;
+    }
+
+    .home-demo-toolbar {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 0 16px;
+        margin-top: 0px;
+        box-sizing: border-box;
+    }
+
+    .demo-btn {
+        position: relative;
+        display: flex;
+        flex: 0 0 84px;
+        width: 84px;
+        padding: 1.5px;
+        text-decoration: none;
+        background: linear-gradient(135deg, var(--neon-a), var(--neon-b));
+        clip-path: polygon(
+            7px 0, 100% 0,
+            100% calc(100% - 7px),
+            calc(100% - 7px) 100%,
+            0 100%, 0 7px
+        );
+        animation: demoBtnGlow 5s ease-in-out infinite;
+        transition: transform 0.15s ease, filter 0.25s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .demo-btn__inner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 44px;
+        padding: 4px 6px;
+        overflow: hidden;
+        background: var(--btn-bg);
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        clip-path: polygon(
+            6px 0, 100% 0,
+            100% calc(100% - 6px),
+            calc(100% - 6px) 100%,
+            0 100%, 0 6px
+        );
+        transition: background-color 0.25s ease;
+    }
+
+    /* Top line: smaller & secondary */
+    .demo-btn__sub {
+        color: rgba(0, 255, 200, 0.72);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        line-height: 1;
+        transition: color 0.25s ease;
+    }
+
+    /* Bottom line ("Play"): larger & highlighted */
+    .demo-btn__main {
+        color: #eafffa;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        line-height: 1;
+        text-shadow: 0 0 8px rgba(0, 255, 200, 0.75), 0 0 2px var(--neon-a);
+        transition: color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    /* Periodic 5s light sweep */
+    .demo-btn__inner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            115deg,
+            transparent 35%,
+            rgba(255, 255, 255, 0.45) 50%,
+            transparent 65%
+        );
+        transform: translateX(-130%);
+        animation: demoBtnSweep 5s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    /* Hover & Focus States */
+    .demo-btn:hover,
+    .demo-btn:focus-visible {
+        outline: none;
+        transform: translateY(-1px);
+        filter: drop-shadow(0 0 9px rgba(0, 255, 200, 0.55));
+    }
+
+    .demo-btn:hover .demo-btn__inner,
+    .demo-btn:focus-visible .demo-btn__inner {
+        background-color: #101a22;
+    }
+
+    .demo-btn:hover .demo-btn__sub,
+    .demo-btn:focus-visible .demo-btn__sub {
+        color: var(--neon-a);
+    }
+
+    .demo-btn:hover .demo-btn__main,
+    .demo-btn:focus-visible .demo-btn__main {
+        color: #ffffff;
+        text-shadow: 0 0 12px rgba(0, 255, 200, 0.95), 0 0 4px #ffffff;
+    }
+
+    .demo-btn:active {
+        transform: translateY(1px);
+        filter: drop-shadow(0 0 5px rgba(0, 255, 200, 0.4));
+    }
+
+    @keyframes demoBtnGlow {
+        0%, 82%, 100% {
+            filter: drop-shadow(0 0 2px rgba(0, 255, 200, 0.18));
+        }
+        90% {
+            filter: drop-shadow(0 0 8px rgba(0, 255, 200, 0.48));
+        }
+    }
+
+    @keyframes demoBtnSweep {
+        0%, 80% {
+            transform: translateX(-130%);
+        }
+        94%, 100% {
+            transform: translateX(130%);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .demo-btn,
+        .demo-btn__inner::after {
+            animation: none;
+        }
+    }
+
+
+
+    .home-page {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* =====================================================
+    Content-driven Game Demo
+    ===================================================== */
+
+    .home-demo-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .home-spin-demo {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 50px 0;
+        margin-top:50px;
+        overflow: visible;
+        min-width: 0;
+        max-width: 100%;
+        border: 1px solid red;
+    }
+
+    .get-set-go {
+        position: absolute;
+        z-index: 150;
+        top: 18px;
+        left: 50%;
+        display: none;
+        width: min(240px, calc(100% - 32px));
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        transform: translateX(-50%);
+
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+
+        font-family: inherit;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+
+        transition:
+            background 180ms ease,
+            transform 100ms ease;
+    }
+
+    .get-set-go:hover {
+        background: rgba(255, 255, 255, 0.14);
+    }
+
+    .get-set-go:active {
+        transform: translateX(-50%) scale(0.97);
+    }
+
+    .get-set-go:focus-visible {
+        outline: 2px solid #ffffff;
+        outline-offset: 4px;
+    }
+
+    /* Board container now participates in normal document flow */
+    .spin-stage {
+        position: relative;
+        overflow: visible;
+        flex: 0 0 auto;
+        width: min(82vw, 78svh, 760px);
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Board */
+    .spin-board {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    /* Bottle positioning layer */
+    .spin-bottle-layer {
+        position: absolute;
+        inset: 0;
+        overflow: visible;
+        pointer-events: none;
+    }
+
+    .spin-bottle-layer :global(.tods-bottle) {
+        position: absolute;
+        display: block;
+        max-width: none;
+        object-fit: contain;
+        transform-origin: center center;
+        pointer-events: auto;
+        user-select: none;
+        -webkit-user-drag: none;
+        touch-action: none;
+        cursor: grab;
+    }
+
+    .spin-bottle-layer :global(.tods-bottle:active) {
+        cursor: grabbing;
+    }
+
+    /* Mobile sizing */
+    @media (max-width: 480px) {
+
+
+
+        .get-set-go {
+            top: 14px;
+            height: 36px;
+            width: min(200px, 100%);
+        }
+
+        .spin-stage {
+            width: min(86vw, 52svh, 400px);
+        }
+    }
+
+
+
+
+
+    @media (prefers-reduced-motion: reduce) {
+        .get-set-go {
+            transition: none;
+        }
+    }
+
+
+    /* =====================================================
+    Mobile-only directional scroll control
+    ===================================================== */
+
+    @media (hover: none) and (pointer: coarse) {
+        .spin-stage {
+            /*
+            * Allow a finger moving down to scroll the page
+            * back toward the top, but block scrolling down
+            * when the gesture starts on the empty board area.
+            */
+            touch-action: pan-up;
+        }
+
+        .spin-bottle-layer :global(.tods-bottle) {
+            /*
+            * Keep bottle dragging independent of page scrolling.
+            */
+            touch-action: none;
+        }
+    }
+
+
+
+    /* =====================================================
+    Responsive Advertisement Sections
+    ===================================================== */
+
+    /* Mobile advertisement */
+    .home-mobile-ad {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 100px;
+        margin-top: 150px;
+        padding: 12px;
+        border: 2px solid blue;
+    }
+
+    .home-mobile-ad__inner {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 300px;
+        
+        margin-inline: auto;
+        border: 2px solid blue;
+    }
+
+    /* Desktop side advertisements */
+    .home-side-ad {
+        display: none;
+    }
+
+    @media (min-width: 900px) {
+
+        .home-mobile-ad {
+            display: none;
+        }
+
+        .home-demo-layout {
+            grid-template-columns:
+                minmax(120px, 1fr)
+                minmax(0, min(78svh, 760px))
+                minmax(120px, 1fr);
+
+            align-items: center;
+            gap: clamp(12px, 3vw, 28px);
+            box-sizing: border-box;
+            padding-inline: clamp(12px, 2vw, 28px);
+        }
+
+        .home-side-ad {
+            display: flex;
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            min-height: 280px;
+            padding: 12px;
+            border: 2px solid blue;
+        }
+
+        .home-side-ad__inner {
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 250px;
+        }
+
+        .home-spin-demo {
+            min-width: 0;
+        }
+
+        .spin-board {padding:50px;}
+    }
+
+
+
+        
+        /* =====================================================
+           Homepage content cards
+           ===================================================== */
+
+        .home-explore {
+            position: relative;
+            padding: 56px 20px 72px;
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .explore-heading {
+            width: min(100%, 680px);
+            margin: 0 auto 32px;
+            text-align: center;
+        }
+
+        .section-eyebrow,
+        .card-category {
+            color: var(--color-accent);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+        }
+
+        .explore-heading h1 {
+            margin: 10px 0;
+            font-size: clamp(27px, 5vw, 42px);
+            line-height: 1.15;
+            letter-spacing: -0.035em;
+        }
+
+        .explore-heading > p {
+            max-width: 520px;
+            margin: 0 auto;
+            color: var(--color-muted);
+            font-size: 15px;
+        }
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            width: min(100%, 920px);
+            margin: 0 auto;
+        }
+
+        .explore-card {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 24px;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--color-card),
+                    var(--color-surface)
+                );
+            color: var(--color-text);
+            text-decoration: none;
+            box-shadow: var(--shadow-card);
+        }
+
+        a.explore-card {
+            transition:
+                transform 180ms ease,
+                border-color 180ms ease;
+        }
+
+        a.explore-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-primary);
+        }
+
+        .card-icon {
+            display: grid;
+            width: 46px;
+            height: 46px;
+            place-items: center;
+            margin-bottom: 20px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-surface);
+            font-size: 23px;
+        }
+
+        .explore-card h2 {
+            margin: 8px 0;
+            font-size: clamp(18px, 2.5vw, 23px);
+            line-height: 1.3;
+        }
+
+        .explore-card p {
+            margin: 0 0 22px;
+            color: var(--color-muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .card-link {
+            margin-top: auto;
+            color: var(--color-accent);
+            font-size: 13px;
+            font-weight: 750;
+        }
+
+        .explore-note {
+            max-width: 640px;
+            margin: 30px auto 0;
+            color: var(--color-muted);
+            font-size: 12px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .home-explore {
+                padding: 40px 14px 56px;
+            }
+
+            .explore-heading {
+                margin-bottom: 24px;
+            }
+
+            .explore-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 12px;
+            }
+
+            .explore-card {
+                padding: 20px;
+            }
+
+            .card-icon {
+                margin-bottom: 14px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            a.explore-card {
+                transition: none;
+            }
+
+            a.explore-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+
+<script>
+    import { initHomepageSpinDemo } from "../scripts/homepageSpinDemo.js";
+
+    const initializeDemo = () => {
+        const root = document.querySelector("[data-home-spin-demo]");
+
+        if (root) {
+            initHomepageSpinDemo(root);
+        }
+    };
+
+    initializeDemo();
+
+    document.addEventListener("astro:page-load", initializeDemo);
+</script>
+</SiteLayout>

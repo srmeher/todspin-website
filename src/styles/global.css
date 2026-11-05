@@ -1,0 +1,150 @@
+
+/* =========================================================
+   TruthOrDareSpin — Global Design System
+   Four selectable themes
+   ========================================================= */
+
+/* 1. Neon After Dark — Default theme */
+:root,
+[data-theme="neon"] {
+    color-scheme: dark;
+
+    --color-bg: #0B0B12;
+    --color-surface: #14141F;
+    --color-card: #1C1C2A;
+    --color-primary: #8B5CF6;
+    --color-accent: #C6FF4D;
+
+    --color-text: #F5F5FA;
+    --color-muted: #AAA8BC;
+    --color-border: #302B40;
+
+    --color-button-text: #0B0B12;
+
+
+    --shadow-card: 0 8px 28px rgb(0 0 0 / 20%);
+}
+
+/* 2. Cyber Blue */
+[data-theme="cyber"] {
+    color-scheme: dark;
+
+    --color-bg: #091525;
+    --color-surface: #101F32;
+    --color-card: #17283D;
+    --color-primary: #38BDF8;
+    --color-accent: #A5F3FC;
+
+    --color-text: #F2F8FF;
+    --color-muted: #A7BED3;
+    --color-border: #29435B;
+
+    --color-button-text: #091525;
+
+
+    --shadow-card: 0 8px 28px rgb(0 0 0 / 20%);
+}
+
+/* 3. Sunset Arcade */
+[data-theme="sunset"] {
+    color-scheme: dark;
+
+    --color-bg: #1B1018;
+    --color-surface: #251720;
+    --color-card: #30202B;
+    --color-primary: #FB7185;
+    --color-accent: #FDBA74;
+
+    --color-text: #FFF5F5;
+    --color-muted: #D0AEBB;
+    --color-border: #4A303E;
+
+    --color-button-text: #1B1018;
+
+
+    --shadow-card: 0 8px 28px rgb(0 0 0 / 20%);
+}
+
+/* 4. Light Pop */
+[data-theme="light"] {
+    color-scheme: light;
+
+    --color-bg: #F5F5FA;
+    --color-surface: #FFFFFF;
+    --color-card: #E7E7F0;
+    --color-primary: #7C3AED;
+    --color-accent: #65A30D;
+
+    --color-text: #191827;
+    --color-muted: #666579;
+    --color-border: #D7D5E3;
+
+    --color-button-text: #FFFFFF;
+
+
+    --shadow-card: 0 8px 28px rgb(30 20 60 / 8%);
+}
+
+/* =========================================================
+   Base styles
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--color-bg, #0B0B12);
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    
+    background: var(--color-bg, #0B0B12);
+    color: var(--color-text, #F5F5FA);
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* Form controls inherit the website font */
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* Accessible keyboard focus */
+:focus-visible {
+    outline: 3px solid var(--color-primary, #8B5CF6);
+    outline-offset: 3px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

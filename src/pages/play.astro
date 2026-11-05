@@ -1,0 +1,30 @@
+
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+    title="Play Truth or Dare Spin Online"
+    description="Spin the bottle and play Truth or Dare with friends."
+    headerVariant="game"
+>
+    <section class="play-page">
+        <div id="tods-game-container">
+            <!-- The game engine will mount here. -->
+        </div>
+    </section>
+
+    <style>
+        .play-page {
+            width: 100%;
+            min-height: 70vh;
+            padding: 20px 12px;
+        }
+
+        #tods-game-container {
+            width: 100%;
+            max-width: 1100px;
+            margin-inline: auto;
+        }
+    </style>
+</SiteLayout>
